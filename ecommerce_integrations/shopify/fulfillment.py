@@ -85,5 +85,7 @@ def get_fulfillment_items(dn_items, fulfillment_items, location_id=None):
 			final_items.append(
 				dn_item.update({"qty": shopify_item.get("quantity"), "warehouse": warehouse})
 			)
+		elif not frappe.db.get_value("Item", dn_item.item_code, "is_stock_item"):
+			final_items.append(dn_item)
 
 	return final_items
