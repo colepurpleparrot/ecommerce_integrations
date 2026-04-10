@@ -393,7 +393,7 @@ def cancel_order(payload, request_id=None):
 	else:
 		create_shopify_log(status="Success")
 
-
+@frappe.whitelist()
 @temp_shopify_session
 def sync_old_orders():
 	shopify_setting = frappe.get_cached_doc(SETTING_DOCTYPE)
